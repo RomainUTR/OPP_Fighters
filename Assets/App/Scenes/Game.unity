@@ -419,6 +419,59 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &269112753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269112754}
+  - component: {fileID: 269112755}
+  m_Layer: 5
+  m_Name: EnemyGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &269112754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269112753}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 433874945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &269112755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269112753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e093fa83835084dba853b9e1c15cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGenerator
+  PossibleEnemies:
+  - {fileID: 11400000, guid: 2981afd7d6428dc45882f49042e09259, type: 2}
+  - {fileID: 11400000, guid: 5755f4d3049811f45931d83309c52411, type: 2}
+  - {fileID: 11400000, guid: fbdf3a225e0c0ac47bf36b5a8a5d3f45, type: 2}
+  - {fileID: 11400000, guid: 73f6e08d008c44fc6bbcecc69c91917a, type: 2}
 --- !u!1 &433874944
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +505,7 @@ RectTransform:
   - {fileID: 188738698}
   - {fileID: 2020094297}
   - {fileID: 1539993026}
+  - {fileID: 269112754}
   m_Father: {fileID: 1256740991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1446,8 +1500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feab9860aea1c45afb0039d5cecbbd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player1: {fileID: 188738701}
-  player2: {fileID: 2020094300}
+  enemyGenerator: {fileID: 269112755}
+  Player1: {fileID: 188738701}
+  Player2: {fileID: 2020094300}
   delayBetweenTurns: 1
 --- !u!1 &1739785448
 GameObject:

@@ -3,8 +3,10 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public Fighter player1;
-    public Fighter player2;
+    public EnemyGenerator enemyGenerator;
+
+    public Fighter Player1;
+    public Fighter Player2;
 
     public float delayBetweenTurns = 1.0f;
 
@@ -16,21 +18,32 @@ public class GameManager : MonoBehaviour
     IEnumerator FightRoutine()
     {
         int round = 0;
+        enemyGenerator.GenerateEnemy(Player2);
 
-        while (player1.IsAlive() && player2.IsAlive())
+        while (Player1.IsAlive())
         {
             round++;
             Debug.Log("--- ROUND " + round + " ---");
 
-            yield return StartCoroutine(HandleTurn(player1, player2));
+            yield return StartCoroutine(HandleTurn(Player1, Player2));
 
-            if (!player2.IsAlive()) { EndBattle(player1); yield break; }
+            if (!Player2.IsAlive())
+            {
+                Debug.Log("Ennemi vaincu !");
+                yield return new WaitForSeconds(1.0f);
+
+                Debug.Log("Un nouvel adversaire apparaît...");
+
+                enemyGenerator.GenerateEnemy(Player2);
+                yield return new WaitForSeconds(1.0f);
+                continue;
+            }
 
             yield return new WaitForSeconds(delayBetweenTurns);
 
-            yield return StartCoroutine(HandleTurn(player2, player1));
+            yield return StartCoroutine(HandleTurn(Player2, Player1));
 
-            if (!player1.IsAlive()) { EndBattle(player2); yield break; }
+            if (!Player1.IsAlive()) { EndBattle(Player2); yield break; }
 
             yield return new WaitForSeconds(delayBetweenTurns);
         }

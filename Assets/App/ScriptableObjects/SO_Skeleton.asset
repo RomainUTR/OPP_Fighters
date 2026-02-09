@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca2d01704540f4da688cd9689089959d, type: 3}
-  m_Name: SO_Vampire
+  m_Name: SO_Skeleton
   m_EditorClassIdentifier: Assembly-CSharp::SO_FighterData
-  FighterName: Dracula
-  MaxHealth: 110
-  CriticalChance: 15
-  MinDamage: 12
-  MaxDamage: 18
-  HealAmount: 5
+  FighterName: Brook
+  MaxHealth: 75
+  CriticalChance: 30
+  MinDamage: 10
+  MaxDamage: 14
+  HealAmount: 7

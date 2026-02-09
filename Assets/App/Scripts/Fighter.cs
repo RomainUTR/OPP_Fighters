@@ -19,9 +19,17 @@ public class Fighter : MonoBehaviour
 
     private void Awake()
     {
+        Init(data);
+    }
+
+    public void Init(SO_FighterData newData)
+    {
+        data = newData;
+
         _name = data.FighterName;
         _currentHealth = data.MaxHealth;
         _critChance = data.CriticalChance;
+        isDefending = false;
 
         if (HealthBar != null)
         {
