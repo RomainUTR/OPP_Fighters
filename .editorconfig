@@ -1,10 +1,9 @@
-# .editorconfig
 root = true
 
 [*.cs]
 
-# Règle : Les champs privés doivent commencer par un _
-dotnet_naming_rule.private_fields_should_begin_with_underscore.severity = suggestion
+# Définition : Les champs privés devraient avoir un _ (C'est la règle de base)
+dotnet_naming_rule.private_fields_should_begin_with_underscore.severity = silent
 dotnet_naming_rule.private_fields_should_begin_with_underscore.symbols  = private_fields
 dotnet_naming_rule.private_fields_should_begin_with_underscore.style    = prefix_underscore
 
