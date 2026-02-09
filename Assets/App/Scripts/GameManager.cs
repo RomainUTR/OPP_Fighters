@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         {
             round++;
             Debug.Log("--- ROUND " + round + " ---");
-            player1.Attack(player2);
+            player1.PerformTurn(player2);
             yield return new WaitForSeconds(delayBetweenTurns);
 
             if (!player2.IsAlive())
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
                 yield break;
             }
 
-            player2.Attack(player1);
+            player2.PerformTurn(player1);
 
             yield return new WaitForSeconds(delayBetweenTurns);
 
