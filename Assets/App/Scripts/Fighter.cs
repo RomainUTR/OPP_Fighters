@@ -10,6 +10,8 @@ public class Fighter : MonoBehaviour
     [SerializeField] private TMP_Text CritText;
     [SerializeField] private UnityEngine.UI.Slider HealthBar;
 
+    public int potions = 0;
+
     private string _name;
     private int _currentHealth;
     private int _critChance;
@@ -20,6 +22,11 @@ public class Fighter : MonoBehaviour
     private void Awake()
     {
         Init(data);
+
+        if (isPlayer)
+        {
+            potions = 5;
+        }
     }
 
     public void Init(SO_FighterData newData)
@@ -112,16 +119,17 @@ public class Fighter : MonoBehaviour
 
     private void Heal()
     {
-        _currentHealth += data.HealAmount;
-
-        if (_currentHealth > data.MaxHealth)
+        if (potions > 0)
         {
-            _currentHealth = data.MaxHealth;
+            potions--;
+            _currentHealth += data.HealAmount;
+            if (_currentHealth > data.MaxHealth) _currentHealth = data.MaxHealth;
+            if (HealthBar != null) HealthBar.value = _currentHealth;
+            Debug.Log($"{_name} utilise une potion ! (Reste: {potions})");
+        } else
+        {
+            Debug.Log($"{_name} cherche une potion... mais n'en a plus !");
         }
-
-        if (HealthBar != null) HealthBar.value = _currentHealth;
-
-        Debug.Log(_name + " se soigne et récupère " + data.HealAmount + " PV");
     }
 
     private void Defend()
@@ -138,5 +146,11 @@ public class Fighter : MonoBehaviour
     public bool IsAlive()
     {
         return _currentHealth > 0;
+    }
+
+    public void AddPotion()
+    {
+        potions++;
+        Debug.Log($"{_name} ramasse une potion ! (Total: {potions})");
     }
 }

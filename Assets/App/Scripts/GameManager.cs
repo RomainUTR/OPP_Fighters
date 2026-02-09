@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Fighter Player2;
 
     public float delayBetweenTurns = 1.0f;
+    public int DropChanceRate = 30;
 
     private void Start()
     {
@@ -32,6 +33,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Ennemi vaincu !");
                 yield return new WaitForSeconds(1.0f);
 
+                int dropChance = Random.Range(0, 100);
+
+                if (dropChance < DropChanceRate)
+                {
+                    Debug.Log("L'ennemi a laissé tomber une potion !");
+                    Player1.AddPotion();
+                }
+
                 Debug.Log("Un nouvel adversaire apparaît...");
 
                 enemyGenerator.GenerateEnemy(Player2);
@@ -53,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         if (source.isPlayer)
         {
-            Debug.Log("<b>A TOI DE JOUER !</b> (A = Attaque, H = Soin, D = Défense)");
+            Debug.Log($"<b>A TOI DE JOUER !</b> (A = Attaque, H = Soin ({source.potions}), D = Défense)");
 
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A) ||
                                              Input.GetKeyDown(KeyCode.H) ||
