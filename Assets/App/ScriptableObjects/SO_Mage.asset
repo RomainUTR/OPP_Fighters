@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_FighterData
   FighterName: Lux
   MaxHealth: 150
-  CriticalChance: 40
+  CriticalChance: 50
+  MinDamage: 10
+  MaxDamage: 15
+  HealAmount: 10

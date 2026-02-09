@@ -15,3 +15,6 @@ MonoBehaviour:
   FighterName: Dracula
   MaxHealth: 200
   CriticalChance: 15
+  MinDamage: 12
+  MaxDamage: 18
+  HealAmount: 5

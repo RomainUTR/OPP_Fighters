@@ -15,6 +15,7 @@ public class Fighter : MonoBehaviour
     private int _critChance;
 
     private bool isDefending = false;
+    public bool isPlayer = false;
 
     private void Awake()
     {
@@ -38,16 +39,21 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    public void PerformTurn(Fighter target)
+    public void PerformAITurn(Fighter target)
+    {
+        int randomChoice = Random.Range(0, 3);
+        ExecuteAction(randomChoice, target);
+    }
+
+    public void ExecuteAction(int actionIndex, Fighter target)
     {
         isDefending = false;
-
-        int actionIndex = Random.Range(0, 3);
+        if (NameText != null) NameText.color = Color.white;
 
         switch (actionIndex)
         {
             case 0:
-                Attack(target); 
+                Attack(target);
                 break;
             case 1:
                 Heal();
