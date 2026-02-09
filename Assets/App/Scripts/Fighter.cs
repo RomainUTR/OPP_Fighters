@@ -13,7 +13,7 @@ public class Fighter : MonoBehaviour
     private int _currentHealth;
     private int _critChance;
 
-    private void Start()
+    private void Awake()
     {
         _name = data.FighterName;
         _currentHealth = data.MaxHealth;
@@ -37,7 +37,7 @@ public class Fighter : MonoBehaviour
 
     public void Attack(Fighter target)
     {
-        int damage = 1;
+        int damage = 10;
 
         int randomValue = Random.Range(0, 101); 
         if (randomValue < _critChance)
